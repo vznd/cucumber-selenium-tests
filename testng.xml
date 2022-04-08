@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Wiki Tests" parallel="false">
+    <test name="Navigate to Main Page">
+        <classes>
+            <class name="runners.MainPageTestsRunner"/>
+        </classes>
+    </test>
+</suite>

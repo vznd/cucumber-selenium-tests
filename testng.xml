@@ -2,7 +2,7 @@
 <suite name="Wiki Tests" parallel="false">
     <test name="Navigate to Main Page">
         <classes>
-            <class name="runners.MainPageTestsRunner"/>
+            <class name="wiki.runners.MainPageRunnerTest"/>
         </classes>
     </test>
 </suite>

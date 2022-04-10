@@ -1,22 +1,25 @@
-package definitions;
+package wiki.definitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import wiki.WebDriverManager;
+import wiki.pages.EnMainPage;
+import wiki.pages.HomePage;
 
 public class OpenMainPageDefinitions {
 
-    WebDriver driver;
+    public WebDriver driver;
+    public HomePage homePage;
+    public EnMainPage enMainPage;
 
     @Before
     public void startDriver() {
-        driver = new ChromeDriver();
+        driver = new WebDriverManager().get();
+        homePage = new HomePage(driver);
     }
 
     @After
@@ -26,19 +29,18 @@ public class OpenMainPageDefinitions {
 
     @Given("Home page is opened")
     public void homePageIsOpened() {
-        driver.get("https://www.wikipedia.org/");
-        Assert.assertTrue(driver.findElement(By.cssSelector("img[class='central-featured-logo']")).isDisplayed(),
-                "The central featured logo was not displayed!");
+        homePage.open().assertCentralFeaturedLogoIsDisplayed();
     }
 
     @When("User clicks on Main Page Link")
     public void userClicksOnMainPageLink() {
-        driver.findElement(By.cssSelector("div[lang='en'] a")).click();
+        homePage.clickEnMainPageLink();
+        enMainPage = new EnMainPage(driver);
     }
 
     @Then("Welcome block is displayed")
     public void welcomeBlockIsDisplayed() {
-        Assert.assertTrue(driver.findElement(By.id("mp-welcome")).isDisplayed(),
-                "The welcome block was not displayed!");
+        enMainPage.assertWelcomeBlockIsDisplayed();
     }
+
 }

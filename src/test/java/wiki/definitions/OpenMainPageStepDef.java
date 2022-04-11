@@ -1,41 +1,39 @@
 package wiki.definitions;
 
+import com.google.inject.Inject;
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import wiki.WebDriverManager;
+import wiki.World;
 import wiki.pages.EnMainPage;
 import wiki.pages.HomePage;
 
-public class OpenMainPageDefinitions {
+public class OpenMainPageStepDef {
 
-    public WebDriver driver;
     public HomePage homePage;
     public EnMainPage enMainPage;
 
-    @Before
-    public void startDriver() {
-        driver = new WebDriverManager().get();
-        homePage = new HomePage(driver);
+    @Inject
+    public OpenMainPageStepDef(World world) {
+        this.homePage = world.pageObjectManager.getHomePage();
+        this.enMainPage = world.pageObjectManager.getEnMainPage();
     }
 
     @After
-    public void quitDriver() {
-        driver.quit();
+    public void quit() {
+        homePage.quit();
     }
 
     @Given("Home page is opened")
     public void homePageIsOpened() {
-        homePage.open().assertCentralFeaturedLogoIsDisplayed();
+        homePage.open()
+                .assertCentralFeaturedLogoIsDisplayed();
     }
 
     @When("User clicks on Main Page Link")
     public void userClicksOnMainPageLink() {
         homePage.clickEnMainPageLink();
-        enMainPage = new EnMainPage(driver);
     }
 
     @Then("Welcome block is displayed")

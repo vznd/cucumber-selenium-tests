@@ -31,9 +31,9 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public EnMainPage clickEnMainPageLink() {
+    public HomePage clickEnMainPageLink() {
         enMainPageLink.click();
-        return new EnMainPage(driver);
+        return this;
     }
 
 }

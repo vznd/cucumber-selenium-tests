@@ -10,4 +10,8 @@ public class BasePage {
         this.driver = driver;
     }
 
+    public void quit() {
+        driver.quit();
+    }
+
 }

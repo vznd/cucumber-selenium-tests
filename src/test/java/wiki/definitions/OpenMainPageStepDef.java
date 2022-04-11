@@ -16,8 +16,8 @@ public class OpenMainPageStepDef {
 
     @Inject
     public OpenMainPageStepDef(World world) {
-        this.homePage = world.pageObjectManager.getHomePage();
-        this.enMainPage = world.pageObjectManager.getEnMainPage();
+        this.homePage = new HomePage(world.webDriverManager.getDriver());
+        this.enMainPage = new EnMainPage(world.webDriverManager.getDriver());
     }
 
     @After

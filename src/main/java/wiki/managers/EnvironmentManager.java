@@ -6,9 +6,9 @@ public class EnvironmentManager {
 
     public static String getEnv() {
         if(env == null) {
-            env = System.getenv("WIKI_ENV") == null
+            env = System.getenv("CUCUMBER_ENV") == null
                     ? "LOCAL"
-                    : System.getenv("WIKI_ENV");
+                    : System.getenv("CUCUMBER_ENV");
         }
         return env;
     }

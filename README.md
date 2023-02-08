@@ -1,7 +1,5 @@
 # Cucumber Selenium Tests
 
-[![CircleCI](https://circleci.com/bb/den44/cucumber-selenium-tests.svg?style=shield&circle-token=a9b5f1d75ac80b6b2c919b9dfafbc00806754b91)](https://app.circleci.com/pipelines/bitbucket/den44/cucumber-selenium-tests?branch=master&filter=all)
-
 This repository includes cucumber selenium tests examples using [wikipedia.org](https://www.wikipedia.org/).
 
 ## Run tests

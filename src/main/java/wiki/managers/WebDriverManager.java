@@ -23,7 +23,7 @@ public class WebDriverManager {
     }
 
     private ChromeOptions getChromeOptions() {
-        if(EnvironmentManager.getEnv().equals("CIRCLE_CI")) {
+        if(EnvironmentManager.getEnv().equals("GITHUB")) {
             return new ChromeOptions()
                     .addArguments("--disable-dev-shm-usage")
                     .addArguments("--headless")
